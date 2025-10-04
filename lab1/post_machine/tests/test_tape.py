@@ -1,13 +1,13 @@
-from post_machine.Tape import Tape, DEFAULT_BLANK
+from post_machine.Tape import Tape
 
 
 def test_read_write_and_sparse():
     t = Tape()
-    assert t.read(0) == DEFAULT_BLANK
+    assert t.read(0) == Tape.DEFAULT_BLANK
     t.write(0, "1")
     assert t.read(0) == "1"
-    t.write(0, DEFAULT_BLANK)
-    assert t.read(0) == DEFAULT_BLANK
+    t.write(0, Tape.DEFAULT_BLANK)
+    assert t.read(0) == Tape.DEFAULT_BLANK
 
 
 def test_bulk_load_and_window():

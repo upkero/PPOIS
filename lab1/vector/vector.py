@@ -147,5 +147,6 @@ class Vector:
     def __str__(self) -> str:
         return f"{self.x} {self.y} {self.z}"
     
+    @staticmethod
     def _is_num(x) -> bool:
         return isinstance(x, (int, float))

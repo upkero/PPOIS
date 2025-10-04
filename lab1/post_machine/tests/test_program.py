@@ -1,6 +1,7 @@
 import textwrap
 import pytest
-from post_machine.program import Program, ProgramParseError
+from post_machine.Program import Program
+from post_machine.exeptions import ProgramParseError
 
 
 def make_prog(tmp_path, content: str):

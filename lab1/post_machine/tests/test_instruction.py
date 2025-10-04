@@ -1,5 +1,6 @@
 import pytest
-from post_machine.instruction import Instruction, Op
+from post_machine.Instruction import Instruction
+from post_machine.Op import Op
 
 
 def test_simple_ops():

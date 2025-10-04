@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Callable, Optional, Tuple
 
-from .Tape import Tape, DEFAULT_BLANK
+from .Tape import Tape
 from .Program import Program
 from .Instruction import Instruction
 from .Op import Op
@@ -92,18 +92,18 @@ class PostMachine:
         if op is Op.MARK:
             self.tape.write(self.head, "1")
         elif op is Op.ERASE:
-            self.tape.write(self.head, DEFAULT_BLANK)
+            self.tape.write(self.head, Tape.DEFAULT_BLANK)
         elif op is Op.R:
             self.head += 1
         elif op is Op.L:
             self.head -= 1
         elif op is Op.JZ:
             self._require_arg(instr)
-            if self.tape.read(self.head) == DEFAULT_BLANK:
+            if self.tape.read(self.head) == Tape.DEFAULT_BLANK:
                 next_pc = (instr.arg, 0)
         elif op is Op.JNZ:
             self._require_arg(instr)
-            if self.tape.read(self.head) != DEFAULT_BLANK:
+            if self.tape.read(self.head) != Tape.DEFAULT_BLANK:
                 next_pc = (instr.arg, 0)
         elif op is Op.GOTO:
             self._require_arg(instr)

@@ -13,7 +13,7 @@ import argparse
 import sys
 from typing import Optional
 
-from .Tape import Tape, DEFAULT_BLANK
+from .Tape import Tape
 from .Program import Program
 from .PostMachine import PostMachine
 from .exeptions import ProgramParseError
