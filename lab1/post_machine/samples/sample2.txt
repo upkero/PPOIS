@@ -1,0 +1,21 @@
+START: main
+HEAD: 0
+TAPE: 111___
+
+[main]
+JZ end
+ERASE
+R
+GOTO seek_end
+
+[seek_end]
+JNZ seek_move
+MARK
+GOTO end
+
+[seek_move]
+R
+GOTO seek_end
+
+[end]
+HALT
