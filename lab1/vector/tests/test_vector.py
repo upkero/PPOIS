@@ -1,6 +1,6 @@
 import math
 import pytest
-from vector.vector import Vector
+from vector.Vector import Vector
 
 
 def vclose(a: Vector, b: Vector, tol=1e-9):

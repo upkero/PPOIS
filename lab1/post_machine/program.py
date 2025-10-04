@@ -1,18 +1,8 @@
-from dataclasses import dataclass
 from typing import Dict, List, Optional
 
-from .instruction import Instruction
-
-
-@dataclass(frozen=True, slots=True)
-class ProgramMeta:
-    start_label: Optional[str] = None
-    head: Optional[int] = None
-    tape_inline: Optional[str] = None
-
-
-class ProgramParseError(Exception):
-    pass
+from .Instruction import Instruction
+from .exeptions import ProgramParseError
+from .ProgramMeta import ProgramMeta
 
 
 class Program:

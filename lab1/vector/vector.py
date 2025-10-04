@@ -6,13 +6,6 @@ import math
 from typing import Tuple
 
 
-_EPS = 1e-9
-
-
-def _is_num(x) -> bool:
-    return isinstance(x, (int, float))
-
-
 @total_ordering
 @dataclass(frozen=True, slots=True)
 class Vector:
@@ -28,6 +21,7 @@ class Vector:
     x: float
     y: float
     z: float
+    _EPS = 1e-9
 
     # ---------- factories ----------
     @classmethod
@@ -79,20 +73,20 @@ class Vector:
         """
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y + self.z * other.z
-        if _is_num(other):
+        if self._is_num(other):
             return Vector(self.x * float(other), self.y * float(other), self.z * float(other))
         return NotImplemented
 
     def __rmul__(self, other) -> "Vector":
-        if _is_num(other):
+        if self._is_num(other):
             return self * other
         return NotImplemented
 
     def __truediv__(self, other: float) -> "Vector":
-        if not _is_num(other):
+        if not self._is_num(other):
             return NotImplemented
         denom = float(other)
-        if abs(denom) < _EPS:
+        if abs(denom) < self._EPS:
             raise ZeroDivisionError("division by zero")
         return Vector(self.x / denom, self.y / denom, self.z / denom)
 
@@ -105,7 +99,7 @@ class Vector:
 
     def normalized(self) -> "Vector":
         L = self.length()
-        if L < _EPS:
+        if L < self._EPS:
             raise ValueError("cannot normalize zero vector")
         return self / L
 
@@ -124,7 +118,7 @@ class Vector:
             raise TypeError("cos() expects Vector")
         a = self.length()
         b = other.length()
-        if a < _EPS or b < _EPS:
+        if a < self._EPS or b < self._EPS:
             raise ValueError("cos undefined for zero-length vector(s)")
         return (self * other) / (a * b)
 
@@ -152,3 +146,6 @@ class Vector:
 
     def __str__(self) -> str:
         return f"{self.x} {self.y} {self.z}"
+    
+    def _is_num(x) -> bool:
+        return isinstance(x, (int, float))

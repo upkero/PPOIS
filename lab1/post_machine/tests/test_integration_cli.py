@@ -1,5 +1,5 @@
 import textwrap
-from post_machine.cli import main as cli_main
+from post_machine.PostMachineCLI import main as cli_main
 
 
 def make_prog(tmp_path, content: str):

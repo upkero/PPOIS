@@ -1,4 +1,4 @@
-from post_machine.tape import Tape, DEFAULT_BLANK
+from post_machine.Tape import Tape, DEFAULT_BLANK
 
 
 def test_read_write_and_sparse():

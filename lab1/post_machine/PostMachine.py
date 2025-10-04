@@ -1,13 +1,11 @@
 from dataclasses import dataclass
 from typing import Callable, Optional, Tuple
 
-from .tape import Tape, DEFAULT_BLANK
-from .program import Program
-from .instruction import Instruction, Op
-
-
-class MachineHalt(Exception):
-    """Raised when HALT is executed (optional use)."""
+from .Tape import Tape, DEFAULT_BLANK
+from .Program import Program
+from .Instruction import Instruction
+from .Op import Op
+from .exeptions import MachineHalt
 
 
 @dataclass(slots=True)

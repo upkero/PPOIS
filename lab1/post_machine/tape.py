@@ -2,28 +2,27 @@ from dataclasses import dataclass, field
 from typing import Dict, Iterable, Optional
 
 
-DEFAULT_BLANK = "_"
-
-
 @dataclass(slots=True)
 class Tape:
     """
     Bi-infinite tape on integers, sparse storage.
     Unset cells read as DEFAULT_BLANK ('_').
     """
+    
+    DEFAULT_BLANK = "_"
     _cells: Dict[int, str] = field(default_factory=dict)
     _visited_min: Optional[int] = None
     _visited_max: Optional[int] = None
 
     def read(self, pos: int) -> str:
-        v = self._cells.get(pos, DEFAULT_BLANK)
+        v = self._cells.get(pos, self.DEFAULT_BLANK)
         self._mark_visit(pos)
         return v
 
     def write(self, pos: int, sym: str) -> None:
         if not isinstance(sym, str) or len(sym) != 1:
             raise ValueError("Symbol must be one-character string")
-        if sym == DEFAULT_BLANK:
+        if sym == self.DEFAULT_BLANK:
             self._cells.pop(pos, None)
         else:
             self._cells[pos] = sym

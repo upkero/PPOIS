@@ -1,17 +1,6 @@
 from dataclasses import dataclass
-from enum import Enum, auto
 from typing import Optional
-
-
-class Op(Enum):
-    MARK = auto()   # write '1'
-    ERASE = auto()  # write '_'
-    R = auto()
-    L = auto()
-    JZ = auto()     # jump if current == '_'
-    JNZ = auto()    # jump if current != '_'
-    GOTO = auto()
-    HALT = auto()
+from .Op import Op
 
 
 @dataclass(frozen=True, slots=True)

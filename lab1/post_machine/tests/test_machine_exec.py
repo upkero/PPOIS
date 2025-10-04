@@ -1,7 +1,7 @@
 import textwrap
-from post_machine.program import Program
-from post_machine.tape import Tape
-from post_machine.machine import PostMachine
+from post_machine.Program import Program
+from post_machine.Tape import Tape
+from post_machine.PostMachine import PostMachine
 
 
 def program_from_str(s: str) -> Program:
