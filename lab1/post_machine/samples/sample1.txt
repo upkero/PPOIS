@@ -1,0 +1,11 @@
+START: main
+TAPE: ___
+HEAD: 0
+
+[main]
+MARK
+R
+MARK
+R
+MARK
+HALT
